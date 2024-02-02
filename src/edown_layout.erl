@@ -40,11 +40,11 @@
 -define(DESCRIPTION_TITLE, "Description").
 -define(DESCRIPTION_LABEL, "description").
 -define(DATA_TYPES_TITLE, "Data Types").
--define(DATA_TYPES_LABEL, "types").
+-define(DATA_TYPES_LABEL, "data-types").
 -define(FUNCTION_INDEX_TITLE, "Function Index").
--define(FUNCTION_INDEX_LABEL, "index").
+-define(FUNCTION_INDEX_LABEL, "function-index").
 -define(FUNCTIONS_TITLE, "Function Details").
--define(FUNCTIONS_LABEL, "functions").
+-define(FUNCTIONS_LABEL, "function-details").
 
 
 %% @doc The layout function.
