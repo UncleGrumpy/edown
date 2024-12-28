@@ -245,7 +245,7 @@ to_simple([]) ->
     [].
 
 text_to_simple(#xmlText{parents = Ps, value = Text} = X) ->
-    case [P || {P,_} <- Ps, lists:member(P, [pre,tt])] of
+    case [P || {P,_} <- Ps, lists:member(P, [pre,code])] of
 	[] ->
 	    X#xmlText{value = normalize_text(Text)};
 	_ ->
@@ -660,6 +660,8 @@ etypef("", [], O, R) ->
     {R, O};
 etypef(L, St, " "++O, R) ->
     etypef(L, St, O, [" " | R]);
+etypef(L, St, "\t"++O, R) ->
+    etypef(L, St, O, ["\t" | R]);
 etypef(L, St, "\n"++O, R) ->
     Ss = lists:takewhile(fun(C) -> C =:= $\s end, O),
     etypef(L, St, lists:nthtail(length(Ss), O), ["\n"++Ss | R]);
@@ -838,7 +840,7 @@ author(E=#xmlElement{}) ->
 	   true ->
 		%% io:fwrite("URI = ~p~n", [URI]),
 		[" (", {em, ["web site:"]}, " ",
-		 %% {tt, [{a, [{href, URI}, {target, "_top"}], [URI]}]},
+		 {tt, [{a, [{href, URI}, {target, "_top"}], [URI]}]},
 		 {a, [{href, URI}], [{tt, [URI]}]},
 		 ")"]
 	end).

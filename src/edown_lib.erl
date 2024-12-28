@@ -76,9 +76,8 @@ redirect_uri("", _, _) ->
 redirect_uri(Href, _Name, E) ->
     case lists:member("/", Href) of
 	false ->
-	    [_|_] = URI = get_attrval(href, E),
-	    NewURI = re:replace(URI,".html",".md",[{return,list},unicode]),
-	    replace_uri(NewURI, E);
+	    URI = get_attrval(href, E),
+		replace_uri(URI, E);
 	true ->
 	    false
     end.
